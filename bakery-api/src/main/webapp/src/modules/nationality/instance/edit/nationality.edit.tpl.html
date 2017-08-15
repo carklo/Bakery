@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<form novalidate name="nationalityForm" role="form">
+    <fieldset>
+         <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+        <div class="form-group col-md-12" ng-class="{'has-success': nationalityForm.name.$valid && nationalityForm.name.$dirty, 'has-error': nationalityForm.name.$invalid && nationalityForm.name.$dirty}" >
+            <label for="name" class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+                <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-required="true" />
+            </div>
+
+            <label for="descripcion" class="col-md-2 control-label">Descripción</label>
+            <div class="col-md-10">
+                <input id="descripcion" name="descripcion" class="form-control" type="text" ng-model="currentRecord.description" ng-required="true" />
+            </div>
+
+        </div>
+    </fieldset>
+</form>
+    </body>
+</html>
