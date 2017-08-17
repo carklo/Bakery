@@ -49,4 +49,3 @@
             };
         }]);
 })(window.angular);
-

@@ -25,13 +25,18 @@ SOFTWARE.
 
     var mod = ng.module("clientModule");
 
-    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','model','$controller',
-        function ($scope, $state, clients, $params, model,$controller) {
+    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','model','$controller', 'client',
+        function ($scope, $state, clients, $params, model,$controller, client) {
             $controller("authController",{$scope:$scope});
             $scope.model = model;
             $scope.records = clients;
             $scope.buttons = ['none'];
-
+            
+            if(client!==null)
+                $scope.records = client;
+            else
+                $scope.records = clients;
+            
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;

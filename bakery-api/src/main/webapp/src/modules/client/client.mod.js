@@ -67,6 +67,11 @@ SOFTWARE.
                     }
                 },
                 resolve: {
+                    references: ['$q', 'Restangular', function ($q, r) {
+                            return $q.all({
+                                nationality: r.all('nationalitys').getList()
+                            });
+                        }],
                     model: 'clientModel',
                     clients: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
@@ -121,14 +126,8 @@ SOFTWARE.
                     }
                 },
                 resolve: {
-                     references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                nationality: r.all('nationalitys').getList()
-                            });
-                        }],
-                    model: 'clientModel',
-                    clients: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url).getList($params);
+                    client: ['clients', '$stateParams', function (clients, $params) {
+                            return clients.get($params.clientId);
                         }]
                 }
             });
